@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Adetola Agoro - Personal Portfolio</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* Header styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            color: #7f8c8d;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Navigation styles */
+        nav {
+            background: rgba(44, 62, 80, 0.95);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        nav li {
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: #3498db;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 80%;
+        }
+
+        /* Container for sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Section styles */
+        section {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 3rem 0;
+            padding: 4rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        section h2 {
+            font-size: 2.8rem;
+            color: #2c3e50;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 1.5rem auto;
+            border-radius: 2px;
+        }
+
+        section p {
+            font-size: 1.2rem;
+            margin-bottom: 1.8rem;
+            text-align: justify;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Introduction section */
+        #introduction {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 249, 250, 0.95));
+        }
+
+        /* Projects section */
+        #projects {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.95), rgba(255, 255, 255, 0.95));
+        }
+
+        .project {
+            background: white;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            border-radius: 15px;
+            border-left: 5px solid #3498db;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .project:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            border-left-color: #2980b9;
+        }
+
+        .project h3 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .project p {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .project a {
+            display: inline-block;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .project a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.5);
+            background: linear-gradient(45deg, #2980b9, #3498db);
+        }
+
+        /* About Me section */
+        #about {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 248, 255, 0.95));
+        }
+
+        #about ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        #about li {
+            background: rgba(52, 152, 219, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            list-style: none;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        #about li:hover {
+            transform: translateX(10px);
+            background: rgba(52, 152, 219, 0.15);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+        }
+
+        #about li strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact section */
+        #contact {
+            background: linear-gradient(135deg, rgba(240, 248, 255, 0.95), rgba(255, 255, 255, 0.95));
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .contact-links a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5);
+            background: linear-gradient(45deg, #764ba2, #667eea);
+        }
+
+        .contact-icon {
+            font-size: 1.3rem;
+        }
+
+        /* Footer styles */
+        footer {
+            background: rgba(44, 62, 80, 0.95);
+            color: white;
+            text-align: center;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            margin-top: 3rem;
+        }
+
+        footer p {
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            header {
+                padding: 2rem 1rem;
+            }
+
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1.1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            section {
+                padding: 2.5rem;
+                margin: 2rem 0;
+            }
+
+            section h2 {
+                font-size: 2.2rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            #about ul {
+                grid-template-columns: 1fr;
+            }
+
+            .project {
+                padding: 2rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Section spacing for anchor links */
+        section {
+            scroll-margin-top: 100px;
+        }
+
+        /* Loading animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Adetola Agoro</h1>
+        <p>UI/UX Designer, Front-End Web Developer & Creative Problem Solver</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>Welcome to my digital portfolio! I'm Adetola Agoro, a passionate UI/UX Designer and Front-End Web Developer with a deep love for creating innovative web solutions that bridge the gap between complex technical challenges and intuitive user experiences. With over three years of hands-on experience in modern web technologies, I specialize in building scalable applications that not only meet business objectives but also delight users with their functionality and design.</p>
+            <p>My journey in software development began with curiosity and has evolved into a career driven by continuous learning and the desire to make a meaningful impact through technology. I believe that great software is born from the intersection of technical excellence, user-centered design, and collaborative teamwork.</p>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            
+            <article class="project">
+                <h3>E-Commerce Platform</h3>
+                <p>A comprehensive online marketplace built with React, Node.js, and MongoDB, featuring advanced user authentication, real-time inventory management, secure payment processing with Stripe integration, and an intuitive admin dashboard. The platform successfully handles over 1,000 daily transactions and provides a seamless shopping experience across desktop and mobile devices. Key features include dynamic product filtering, wishlist functionality, order tracking, and automated email notifications.</p>
+                <a href="https://github.com/Agoro-adetola/AWS-Cloud-Projects" target="_blank">View Project</a>
+            </article>
+
+            <article class="project">
+                <h3>Task Management Application</h3>
+                <p>A collaborative project management solution designed for remote teams, built using Vue.js, Express.js, and PostgreSQL. The application features real-time collaboration through WebSocket integration, file sharing capabilities, advanced progress tracking with visual analytics, and integrated communication tools. It supports multiple project workflows including Kanban boards, Gantt charts, and customizable team structures, making it perfect for agile development teams and creative agencies.</p>
+                <a href="https://github.com/Agoro-adetola/AWS-Cloud-Projects" target="_blank">View Project</a>
+            </article>
+
+            <article class="project">
+                <h3>Weather Forecast Dashboard</h3>
+                <p>An interactive weather application that provides comprehensive meteorological data, including detailed 7-day forecasts, historical weather analysis, and severe weather alerts. Built with vanilla JavaScript, Chart.js for data visualization, and integration with multiple weather APIs for enhanced accuracy. The application features location-based forecasting using geolocation, customizable weather widgets, offline functionality with service workers, and a fully responsive design optimized for all devices.</p>
+                <a href="https://github.com/Agoro-adetola/AWS-Cloud-Projects" target="_blank">View Project</a>
+            </article>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I'm a dedicated UI/UX Designer and Front-End Web Developer with over three years of professional experience in web development. My passion for technology extends beyond coding – I'm fascinated by the entire product development lifecycle, from initial concept and user research to deployment and continuous improvement.</p>
+            
+            <p>Throughout my career, I've had the privilege of working with diverse teams in various industries, including e-commerce, healthcare, and education technology. This experience has taught me the importance of adaptability, clear communication, and the ability to translate complex technical concepts into business value.</p>
+
+            <h3 style="color: #2c3e50; margin: 2rem 0 1.5rem 0; font-size: 1.8rem;">Technical Skills & Expertise</h3>
+            <ul>
+                <li><strong>Frontend Development:</strong> HTML5, CSS3, JavaScript (ES6+), React, Vue.js, Angular, TypeScript</li>
+                <li><strong>Database Management:</strong> MongoDB, PostgreSQL, MySQL, Redis, Firebase</li>
+                <li><strong>DevOps & Tools:</strong> Git, Docker, AWS, Jenkins, Webpack, CI/CD Pipelines</li>
+                <li><strong>Design & UX:</strong> Figma, Adobe Creative Suite, Responsive Design, Accessibility</li>
+                <li><strong>Soft Skills:</strong> Team Leadership, Agile/Scrum, Problem-Solving, Technical Writing</li>
+            </ul>
+
+            <h3 style="color: #2c3e50; margin: 2rem 0 1.5rem 0; font-size: 1.8rem;">Beyond Coding</h3>
+            <p>When I'm not immersed in code, you can find me exploring mountain trails with my camera, capturing the beauty of nature through photography. I'm also an avid reader of science fiction and technology blogs, always staying current with industry trends and emerging technologies. I regularly contribute to open-source projects and enjoy mentoring junior developers through coding bootcamps and local tech meetups.</p>
+            
+            <p>I believe in giving back to the community that has supported my growth, which is why I volunteer as a coding instructor at weekend workshops for underrepresented groups in tech. These experiences have not only enriched my perspective but have also made me a better communicator and team player.</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>I'm always excited to connect with fellow developers, potential collaborators, innovative companies, and anyone passionate about technology and its potential to solve real-world problems. Whether you're looking to discuss a project opportunity, seeking technical advice, or simply want to chat about the latest developments in web technology, I'd love to hear from you!</p>
+            
+            <div class="contact-links">
+                <a href="mailto:buzzartconcept@gmail.com">
+                    <span class="contact-icon">📧</span>
+                    Email Me
+                </a>
+                <a href="https://www.linkedin.com/in/agoro-adetola-91146a76/" target="_blank">
+                    <span class="contact-icon">💼</span>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/Agoro-adetola" target="_blank">
+                    <span class="contact-icon">💻</span>
+                    GitHub
+                </a>
+            </div>
+            
+            <p>I typically respond to emails within 24 hours and am always open to discussing new opportunities, collaborative projects, or sharing insights about web development best practices. Let's build something amazing together!</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Adetola Agoro</p>
+    </footer>
+</body>
+</html>
